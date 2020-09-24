@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import './tailwind.css'
 
 function App() {
   fetch('http://localhost:8080/api/auth/signup', {
@@ -13,8 +14,12 @@ function App() {
   .catch(error => console.log(error));
 
   return (
-    <div className="App">
+    <div className="App bg-blue-400">
       THIS IS A TEST on Developer Branch :)
+
+      <button className="bg-blue-400 rounded shadow-xl">
+hi
+      </button>
     </div>
   );
 }

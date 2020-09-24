@@ -4,6 +4,7 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const autoprefixer = require('autoprefixer');
 
 module.exports = function (_env, argv) {
 
@@ -41,7 +42,22 @@ module.exports = function (_env, argv) {
                         options: {
                             sourceMap: true
                         }
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            postcssOptions: {
+                                plugins: [
+                                    [
+                                        require('tailwindcss'),
+                                        require('autoprefixer'),
+                                        'postcss-preset-env'
+                                    ]
+                                ]
+                            }
+                        }
                     }
+                
                 ]
             },
             {
@@ -78,6 +94,10 @@ module.exports = function (_env, argv) {
                 "process.env.NODE_ENV": JSON.stringify(
                     isProduction ? "production" : "development"
                 )
+            }),
+            new MiniCssExtractPlugin({
+                filename: "./tailwind.css",
+                chunkFilename: "./tailwind.css"
             }),
             new HtmlWebpackPlugin({
                 template: path.resolve(__dirname, "public/index.html"),

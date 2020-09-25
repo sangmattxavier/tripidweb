@@ -1,6 +1,6 @@
 <div class="bg-gray-200 flex flex-col items-center justify-center h-screen">
   <form action="" class="bg-white flex flex-col w-8/12 rounded shadow-xl p-6">
-    <p class="text-3xl text-center">Tripid</p>
+    <p class="text-3xl text-center text-black">Tripid</p>
     <input type="email" class="m-4" name="email" placeholder="email" required>
     <input type="password" class="m-4" name="password" placeholder="password" required>
     <button class="bg-blue-400 rounded text-white text-lg px-3 pt-1 mb-2 w-full">login</button>
@@ -10,7 +10,7 @@
 
 <div class="bg-gray-200 flex flex-col items-center justify-center h-screen">
   <form action="" class="bg-white flex flex-col w-8/12 rounded shadow-xl p-6">
-    <p class="text-3xl text-center">Tripid</p>
+    <p class="text-3xl text-center text-black">Tripid</p>
     <input type="email" class="m-4" name="email" placeholder="email" required>
     <input type="text" class="m-4" name="username" placeholder="username" required>
     <input type="password" class="m-4" name="password" placeholder="password" required>
@@ -26,5 +26,21 @@
   </nav>
   <div class="p-4 w-full flex flex-col items-center justify-start">
     <section class="w-10/12 h-12 bg-blue-400 rounded shadow-xl my-2" *ngFor="let trip of trips">Trip 1</section>
+  </div>
+</div>
+
+<div class="bg-gray-200 flex flex-col items-center justify-start h-screen text-white">
+  <nav class="w-full h-16 flex flex-row items-center justify-between bg-white shadow-xl">
+    <button class="bg-gray-400 rounded px-3 py-1 ml-4">Back</button>
+  </nav>
+  <div class="p-4 w-full flex flex-col items-center justify-start">
+    <form action="" class="bg-white flex flex-col w-8/12 rounded shadow-xl p-6">
+      <p class="text-3xl text-center text-black">Create a Trip</p>
+      <input type="text" class="m-4" name="title" placeholder="title" required>
+      <input type="text" class="m-4" name="type" placeholder="type" required>
+      <input type="text" class="m-4" name="location" placeholder="location" required>
+      <button class="bg-blue-400 rounded text-white text-lg px-3 pt-1 mb-2 w-full">create</button>
+      <button class="bg-gray-400 rounded text-white text-lg px-3 pt-1 w-full">cancel</button>
+    </form>
   </div>
 </div>

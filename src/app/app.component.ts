@@ -8,5 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'tripidweb';
 
-  trips = ["test","test","test","test","test","test"]
+  trips = ["test","test","test","test","test","test"];
+  days = [["test","test","test","test","test","test"], ["test","test","test","test","test","test"], ["test","test","test","test","test","test"]];
+  supplies = ["test","test","test","test","test","test"];
 }

@@ -14,7 +14,17 @@
     <input type="email" class="m-4" name="email" placeholder="email" required>
     <input type="text" class="m-4" name="username" placeholder="username" required>
     <input type="password" class="m-4" name="password" placeholder="password" required>
-    <button class="bg-blue-400 rounded text-white text-lg px-3 pt-1 mb-2 w-full">signup</button>
-    <button class="bg-gray-400 rounded text-white text-lg px-3 pt-1 w-full">login</button>
+    <button class="bg-blue-400 rounded text-white text-lg px-3 py-1 mb-2 w-full">signup</button>
+    <button class="bg-gray-400 rounded text-white text-lg px-3 py-1 w-full">login</button>
   </form>
+</div>
+
+<div class="bg-gray-200 flex flex-col items-center justify-start h-screen text-white">
+  <nav class="w-full h-16 flex flex-row items-center justify-between bg-white shadow-xl">
+    <p class="text-center text-lg text-black ml-4">Home</p>
+    <button class="bg-gray-400 rounded px-3 py-1 mr-4">S</button>
+  </nav>
+  <div class="p-4 w-full flex flex-col items-center justify-start">
+    <section class="w-10/12 h-12 bg-blue-400 rounded shadow-xl my-2" *ngFor="let trip of trips">Trip 1</section>
+  </div>
 </div>

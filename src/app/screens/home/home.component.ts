@@ -17,7 +17,10 @@ export class HomeComponent implements OnInit {
   get(){
     this.appService.getTripsByUserId().subscribe(
       data => {
-        this.trips = data;
+        console.log("Get trips by user id")
+        console.log("\tStatus Code: ", data.status);
+        console.log("\tData: ", data);
+        this.trips = data.body as Trip[];
       },
       error => console.error('There was an error!', error))
   }

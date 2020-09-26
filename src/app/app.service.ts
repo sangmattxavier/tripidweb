@@ -13,35 +13,28 @@ export class AppService {
 
   }
 
-  postLogin(username: String, password: String){
-    this.http.post<Login>('http://localhost:8080/api/auth/signin', { 
+  postLogin(username: String, password: String): Observable<any>{
+    return this.http.post<any>('http://localhost:8080/api/auth/signin', { 
       username: username,
       password: password
-     }).subscribe({
-        next: data => {
-          console.log("Token: "+data.accessToken+"\nData: "+data);
-          State.API = data.accessToken;
-          State.id = data.id;
-        },
-        error: error => console.error('There was an error!', error)
-      })
+     }, { observe: 'response' })
   }
 
-  postSignup(username: String, email: String, password: String){
-    this.http.post('http://localhost:8080/api/auth/signup', { 
+  postSignup(username: String, email: String, password: String): Observable<any>{
+    return this.http.post('http://localhost:8080/api/auth/signup', { 
       username: username,
       email: email,
       password: password,
       roles: ["user"]
-     }).subscribe({
-        next: data => console.log(data),
-        error: error => console.error('There was an error!', error)
-      })
+     }, { observe: 'response' })
   }
 
-  getTripsByUserId(): Observable<Trip[]>{
+  getTripsByUserId(): Observable<any>{
     const headers = new HttpHeaders().set('x-access-token', State.API)
-    return this.http.get<Trip[]>('http://localhost:8080/api/trips/'+State.id, { headers });
+    return this.http.get<any>('http://localhost:8080/api/trips/'+State.id, { 
+      headers: headers, 
+      observe: 'response'
+    });
   }
 
   postTrip(title: String, type: String, location: String): Observable<any>{
@@ -51,6 +44,9 @@ export class AppService {
       type: type,
       location: [location],
       participant_ids:[State.id]
-     }, {headers});
+     }, {
+       headers: headers, 
+       observe: 'response'
+    });
   }
 }

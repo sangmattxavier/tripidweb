@@ -17,6 +17,13 @@ export class SignupComponent implements OnInit {
   }
   
   signup(){
-    this.appService.postSignup(this.usernameSignUp, this.emailSignUp, this.passwordSignUp);
+    this.appService.postSignup(this.usernameSignUp, this.emailSignUp, this.passwordSignUp).subscribe({
+      next: data => {
+        console.log("Post signup")
+        console.log("\tStatus Code: ", data.status);
+        console.log("\tData: ", data);
+      },
+      error: error => console.error('There was an error!', error)
+    });
   }
 }

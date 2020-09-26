@@ -12,9 +12,10 @@ export class HomeComponent implements OnInit {
   constructor(private appService: AppService) { }
 
   ngOnInit(): void {
+    this.getTrips();
   }
 
-  get(){
+  getTrips(){
     this.appService.getTripsByUserId().subscribe(
       data => {
         console.log("Get trips by user id")

@@ -1,0 +1,9 @@
+<div class="bg-gray-200 flex flex-col items-center justify-center h-screen">
+    <form action="" class="bg-white flex flex-col w-8/12 rounded shadow-xl p-6">
+        <p class="text-3xl text-center text-black">Tripid</p>
+        <input [(ngModel)]="username" type="text" class="m-4" name="username" placeholder="username" required>
+        <input [(ngModel)]="password" type="password" class="m-4" name="password" placeholder="password" required>
+        <button (click)="login()" class="bg-blue-400 rounded text-white text-lg px-3 pt-1 mb-2 w-full">login</button>
+        <button class="bg-gray-400 rounded text-white text-lg px-3 pt-1 w-full">signup</button>
+    </form>
+</div>

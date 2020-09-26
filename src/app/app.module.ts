@@ -5,12 +5,22 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { GoogleMapsModule } from '@angular/google-maps'
+import { GoogleMapsModule } from '@angular/google-maps';
+import { LoginComponent } from './screens/login/login.component';
+import { SignupComponent } from './screens/signup/signup.component';
+import { HomeComponent } from './screens/home/home.component';
+import { CreateTripComponent } from './screens/create-trip/create-trip.component';
+import { TripComponent } from './screens/trip/trip.component'
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    SignupComponent,
+    HomeComponent,
+    CreateTripComponent,
+    TripComponent
   ],
   imports: [
     BrowserModule,

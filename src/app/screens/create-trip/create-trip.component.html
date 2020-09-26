@@ -1,0 +1,15 @@
+<div class="bg-gray-200 flex flex-col items-center justify-start h-screen text-white">
+    <nav class="w-full h-16 flex flex-row items-center justify-between bg-white shadow-xl">
+      <button class="bg-gray-400 rounded px-3 py-1 ml-4">Back</button>
+    </nav>
+    <div class="p-4 w-full flex flex-col items-center justify-start">
+      <form action="" class="bg-white flex flex-col w-8/12 rounded shadow-xl p-6">
+        <p class="text-3xl text-center text-black">Create a Trip</p>
+        <input [(ngModel)]="titleCreateTrip" type="text" class="m-4 text-black" name="titleCreateTrip" placeholder="title" required>
+        <input [(ngModel)]="typeCreateTrip" type="text" class="m-4 text-black" name="typeCreateTrip" placeholder="type" required>
+        <input [(ngModel)]="locationCreateTrip" type="text" class="m-4 text-black" name="locationCreateTrip" placeholder="location" required>
+        <button (click)="createTrip()" class="bg-blue-400 rounded text-white text-lg px-3 pt-1 mb-2 w-full">create</button>
+        <button class="bg-gray-400 rounded text-white text-lg px-3 pt-1 w-full">cancel</button>
+      </form>
+    </div>
+</div>

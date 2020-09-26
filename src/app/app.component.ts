@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AppService } from './app.service';
+import { State } from './state';
 
 @Component({
   selector: 'app-root',
@@ -28,5 +29,9 @@ export class AppComponent {
 
   signup(){
     this.appService.postSignup(this.usernameSignUp, this.emailSignUp, this.passwordSignUp);
+  }
+
+  get(){
+    this.appService.getTripsByUserId();
   }
 }

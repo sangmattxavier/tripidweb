@@ -11,6 +11,10 @@ export class AppComponent {
   username: String;
   password: String;
 
+  emailSignUp: String;
+  usernameSignUp: String;
+  passwordSignUp: String;
+
   trips = ["test","test","test","test","test","test"];
   days = [["test","test","test","test","test","test"], ["test","test","test","test","test","test"], ["test","test","test","test","test","test"]];
   supplies = ["test","test","test","test","test","test"];
@@ -20,5 +24,9 @@ export class AppComponent {
 
   login(){
     this.appService.postLogin(this.username, this.password);
+  }
+
+  signup(){
+    this.appService.postSignup(this.usernameSignUp, this.emailSignUp, this.passwordSignUp);
   }
 }

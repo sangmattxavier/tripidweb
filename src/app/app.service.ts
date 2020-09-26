@@ -14,8 +14,20 @@ export class AppService {
       username: username,
       password: password
      }).subscribe({
-    next: data => console.log(data),
-    error: error => console.error('There was an error!', error)
-  })
+        next: data => console.log(data),
+        error: error => console.error('There was an error!', error)
+      })
+  }
+
+  postSignup(username: String, email: String, password: String){
+    this.http.post('http://localhost:8080/api/auth/signup', { 
+      username: username,
+      email: email,
+      password: password,
+      roles: ["user"]
+     }).subscribe({
+        next: data => console.log(data),
+        error: error => console.error('There was an error!', error)
+      })
   }
 }

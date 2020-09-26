@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AppService } from './app.service';
+import { Trip } from './models';
 import { State } from './state';
 
 @Component({
@@ -16,7 +17,7 @@ export class AppComponent {
   usernameSignUp: String;
   passwordSignUp: String;
 
-  trips = ["test","test","test","test","test","test"];
+  trips : Trip[];
   days = [["test","test","test","test","test","test"], ["test","test","test","test","test","test"], ["test","test","test","test","test","test"]];
   supplies = ["test","test","test","test","test","test"];
 
@@ -32,6 +33,10 @@ export class AppComponent {
   }
 
   get(){
-    this.appService.getTripsByUserId();
+    this.appService.getTripsByUserId().subscribe(
+      data => {
+        this.trips = data;
+      },
+      error => console.error('There was an error!', error))
   }
 }

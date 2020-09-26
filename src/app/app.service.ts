@@ -43,4 +43,14 @@ export class AppService {
     const headers = new HttpHeaders().set('x-access-token', State.API)
     return this.http.get<Trip[]>('http://localhost:8080/api/trips/'+State.id, { headers });
   }
+
+  postTrip(title: String, type: String, location: String): Observable<any>{
+    const headers = new HttpHeaders().set('x-access-token', State.API)
+    return this.http.post<any>('http://localhost:8080/api/trip', { 
+      title: title,
+      type: type,
+      location: [location],
+      participant_ids:[State.id]
+     }, {headers});
+  }
 }

@@ -17,6 +17,10 @@ export class AppComponent {
   usernameSignUp: String;
   passwordSignUp: String;
 
+  titleCreateTrip: String;
+  typeCreateTrip: String;
+  locationCreateTrip: String;
+
   trips : Trip[];
   days = [["test","test","test","test","test","test"], ["test","test","test","test","test","test"], ["test","test","test","test","test","test"]];
   supplies = ["test","test","test","test","test","test"];
@@ -38,5 +42,15 @@ export class AppComponent {
         this.trips = data;
       },
       error => console.error('There was an error!', error))
+  }
+
+  createTrip(){
+    this.appService.postTrip(this.titleCreateTrip, this.typeCreateTrip, this.locationCreateTrip).subscribe({
+      next: data => {
+        console.log("Created Trip");
+        console.log(data);
+      },
+      error: error => console.error('There was an error!', error)
+    })
   }
 }

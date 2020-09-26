@@ -7,6 +7,7 @@ import { CreateTripComponent } from './screens/create-trip/create-trip.component
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'home', component: HomeComponent },
   { path: 'create-trip', component: CreateTripComponent },

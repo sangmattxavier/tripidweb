@@ -10,22 +10,22 @@ import { AppService } from 'src/app/app.service';
 })
 export class TripComponent implements OnInit {
   id: string;
-  trip: Trip;
+  trip: Trip = null;
   days = [["test","test","test","test","test","test"], ["test","test","test","test","test","test"], ["test","test","test","test","test","test"]];
   supplies = ["test","test","test","test","test","test"];
 
   constructor(private activatedroute: ActivatedRoute, private appService: AppService) {
     this.activatedroute.params.subscribe(data => {
-        this.id = data as unknown as string;
+        this.id = data.id as unknown as string;
+        this.appService.getTripByTripId(this.id).subscribe(
+          data => {
+            console.log("Get trip by trip id");
+            console.log("\tStatus Code: ", data.status);
+            console.log("\tData: ", data);
+            this.trip = data.body as Trip;
+          },
+          error => console.error('There was an error!', error));
     })
-    this.appService.getTripByTripId(this.id).subscribe(
-      data => {
-        console.log("Get trip by trip id");
-        console.log("\tStatus Code: ", data.status);
-        console.log("\tData: ", data);
-        this.trip = data.body as Trip;
-      },
-      error => console.error('There was an error!', error));
   }
 
   ngOnInit(): void {

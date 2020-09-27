@@ -4,6 +4,10 @@
       <button class="bg-gray-400 rounded px-3 py-1 mr-4">S</button>
     </nav>
     <div class="p-4 w-full flex flex-col items-center justify-start">
-      <section class="w-10/12 h-12 bg-blue-400 rounded shadow-xl my-2" *ngFor="let trip of trips">Trip 1</section>
+      <section [routerLink]="['/trip', trip._id]" class="w-10/12 bg-blue-400 rounded shadow-xl my-2 p-3" *ngFor="let trip of trips">
+        <p class="text-lg font-bold uppercase">{{trip.title}}</p>
+        <p class="text-base">Total Participants: </p>
+        <p>{{trip.participant_ids.length}}</p>
+      </section>
     </div>
 </div>

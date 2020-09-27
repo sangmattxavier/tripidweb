@@ -5,9 +5,13 @@
     </nav>
     <div class="p-4 w-full flex flex-col items-center justify-start">
       <section [routerLink]="['/trip', trip._id]" class="w-10/12 bg-blue-400 rounded shadow-xl my-2 p-3" *ngFor="let trip of trips">
-        <p class="text-lg font-bold uppercase">{{trip.title}}</p>
+        <div class="flex flex-row justify-between">        
+          <p class="text-lg font-bold uppercase">{{trip.title}}</p>
+          <p *ngIf="trip.start_date != null && trip.end_date != null" class="text-base font-bold uppercase">{{trip.start_date.toDateString()}} - {{trip.end_date.toDateString()}}</p>
+        </div>
         <p class="text-base">Total Participants: </p>
         <p>{{trip.participant_ids.length}}</p>
       </section>
     </div>
+    <button routerLink="/create-trip" class="bg-green-400 rounded px-3 py-1 mr-4">add trip</button>
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AppService } from 'src/app/app.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class SignupComponent implements OnInit {
   usernameSignUp: String;
   passwordSignUp: String;
 
-  constructor(private appService: AppService) { }
+  constructor(private appService: AppService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -22,6 +23,7 @@ export class SignupComponent implements OnInit {
         console.log("Post signup")
         console.log("\tStatus Code: ", data.status);
         console.log("\tData: ", data);
+        this.router.navigateByUrl('');
       },
       error: error => console.error('There was an error!', error)
     });

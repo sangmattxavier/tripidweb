@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AppService } from 'src/app/app.service';
 
 @Component({
@@ -10,16 +11,20 @@ export class CreateTripComponent implements OnInit {
   titleCreateTrip: String;
   typeCreateTrip: String;
   locationCreateTrip: String;
-  constructor(private appService: AppService) { }
+  startDate: Date;
+  endDate: Date;
+  constructor(private appService: AppService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   createTrip(){
-    this.appService.postTrip(this.titleCreateTrip, this.typeCreateTrip, this.locationCreateTrip).subscribe({
+    this.appService.postTrip(this.titleCreateTrip, this.typeCreateTrip, this.locationCreateTrip, this.startDate, this.endDate).subscribe({
       next: data => {
-        console.log("Created Trip");
-        console.log(data);
+        console.log("Post trip")
+        console.log("\tStatus Code: ", data.status);
+        console.log("\tData: ", data);
+        this.router.navigateByUrl("/home");
       },
       error: error => console.error('There was an error!', error)
     })

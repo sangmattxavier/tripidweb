@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete/ngx-google-places-autocomplete.directive';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
@@ -11,6 +11,8 @@ import { Location } from '../../models';
 })
 export class CreateTripComponent implements OnInit {
   @ViewChild("placesRef") placesRef : GooglePlaceDirective;
+  @ViewChild("locationSection") locationSection: ElementRef;
+  @ViewChild("invitationSection") invitationSection: ElementRef;
   titleCreateTrip: String;
   typeCreateTrip: String;
   startDate: Date;
@@ -19,6 +21,8 @@ export class CreateTripComponent implements OnInit {
   invites: [String] = null;
   locations: [Location] = null;
   location: Address;
+  locationsOpened: boolean = false;
+  invitationsOpened: boolean = false;
 
   constructor(private appService: AppService, private router: Router) { }
 
@@ -89,5 +93,23 @@ export class CreateTripComponent implements OnInit {
     if (index > -1) {
       this.invites.splice(index, 1);
     }
+  }
+
+  toggleLocations(){
+    if(this.locationsOpened){
+      this.locationsOpened = false;
+    } else {
+      this.locationsOpened = true;
+    }
+    console.log("boolean: "+this.locationsOpened)
+  }
+
+  toggleInvitations(){
+    if(this.invitationsOpened){
+      this.invitationsOpened = false;
+    } else {
+      this.invitationsOpened = true;
+    }
+    console.log("boolean: "+this.invitationsOpened)
   }
 }

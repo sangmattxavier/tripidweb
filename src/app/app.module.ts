@@ -11,6 +11,7 @@ import { SignupComponent } from './screens/signup/signup.component';
 import { HomeComponent } from './screens/home/home.component';
 import { CreateTripComponent } from './screens/create-trip/create-trip.component';
 import { TripComponent } from './screens/trip/trip.component'
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { TripComponent } from './screens/trip/trip.component'
     AppRoutingModule, 
     GoogleMapsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    GooglePlaceModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { state } from '@angular/animations';
 import { State } from './state';
-import { Login, Trip } from './models';
+import { Location, Login, Trip } from './models';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -45,13 +45,13 @@ export class AppService {
     });
   }
 
-  postTrip(title: String, type: String, location: String, invites: [String], startDate?: Date, endDate?: Date): Observable<any>{
+  postTrip(title: String, type: String, locations: [Location], invites: [String], startDate?: Date, endDate?: Date): Observable<any>{
     const headers = new HttpHeaders().set('x-access-token', State.API)
     if(invites == null) {
       return this.http.post<any>('http://localhost:8080/api/trip', { 
         title: title,
         type: type,
-        locations: [location],
+        locations: locations,
         start_date: startDate,
         end_date: endDate,
         participant_ids:[State.id],
@@ -63,7 +63,7 @@ export class AppService {
       return this.http.post<any>('http://localhost:8080/api/trip', { 
         title: title,
         type: type,
-        locations: [location],
+        locations: locations,
         start_date: startDate,
         end_date: endDate,
         participant_ids:[State.id],

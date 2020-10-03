@@ -7,16 +7,27 @@
         <p class="text-3xl text-center text-black">Create a Trip</p>
         <input [(ngModel)]="titleCreateTrip" type="text" class="m-4 text-black" name="titleCreateTrip" placeholder="title" required>
         <input [(ngModel)]="typeCreateTrip" type="text" class="m-4 text-black" name="typeCreateTrip" placeholder="type" required>
-        <input [(ngModel)]="locationCreateTrip" type="text" class="m-4 text-black" name="locationCreateTrip" placeholder="location" required>
+        <!-- <input [(ngModel)]="locationCreateTrip" type="text" class="m-4 text-black" name="locationCreateTrip" placeholder="location" required> -->
+        <!-- <input ngx-google-places-autocomplete  class="m-4 text-black"/>  -->
         <input [ngModel]="startDate | date:'yyyy-MM-dd'" class="m-4 text-black" placeholder="start date" (ngModelChange)="startDate = $event" type="date" name="startDate"/>
         <input [ngModel]="endDate | date:'yyyy-MM-dd'" class="m-4 text-black" placeholder="end date" (ngModelChange)="endDate = $event" type="date" name="startDate"/>
+        
+        <div class="flex flex-row" *ngFor="let location of locations">
+          <label for="" class="m-4 text-black w-9/12 overflow-x-scroll">{{location.formatted_address}}</label>
+          <button (click)="deleteLocation(location)" class="bg-red-400 rounded text-white text-lg px-3 py-1 mb-2 w-3/12">delete</button>
+        </div>
+        <div class="flex flex-row">
+          <input (onAddressChange)="handleAddressChange($event)" ngx-google-places-autocomplete  #placesRef="ngx-places" class="m-4 text-black w-9/12"> 
+          <button (click)="addLocation()" class="bg-green-400 rounded text-white text-lg px-3 py-1 mb-2 w-3/12">add</button>
+        </div>
+        
         <div class="flex flex-row" *ngFor="let invite of invites">
           <label for="" class="m-4 text-black w-9/12 overflow-x-scroll">{{invite}}</label>
           <button (click)="deleteInvite(invite)" class="bg-red-400 rounded text-white text-lg px-3 py-1 mb-2 w-3/12">delete</button>
         </div>
         <div class="flex flex-row">
           <input [(ngModel)]="invite" class="m-4 text-black w-9/12" placeholder="email" type="email" name="invite"/> 
-          <button class="bg-green-400 rounded text-white text-lg px-3 py-1 mb-2 w-3/12" (click)="addInvite()">add</button>
+          <button (click)="addInvite()" class="bg-green-400 rounded text-white text-lg px-3 py-1 mb-2 w-3/12">add</button>
         </div>
         <button (click)="createTrip()" class="bg-blue-400 rounded text-white text-lg px-3 py-1 mb-2 w-full">create</button>
         <button class="bg-gray-400 rounded text-white text-lg px-3 py-1 w-full">cancel</button>

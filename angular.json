@@ -34,7 +34,10 @@
               "src/styles.less",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "ngx-google-places-autocomplete"
+            ]
           },
           "configurations": {
             "production": {

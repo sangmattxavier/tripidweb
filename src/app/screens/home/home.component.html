@@ -10,6 +10,8 @@
           <p *ngIf="trip.start_date != null && trip.end_date != null" class="text-base font-bold uppercase">{{trip.start_date.toDateString()}} - {{trip.end_date.toDateString()}}</p>
         </div>
         <p class="text-base"> {{ trip.type }} </p>
+        <p class="text-base" *ngIf="trip.locations != null">Total Locations: </p>
+        <p class="text-base" *ngIf="trip.locations != null">{{trip.locations.length}}</p>
         <p class="text-base">Total Participants: </p>
         <p>{{trip.participant_ids.length}}</p>
         <p class="text-base">Pending Invites: </p>

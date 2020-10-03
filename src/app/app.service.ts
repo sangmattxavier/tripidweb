@@ -45,18 +45,33 @@ export class AppService {
     });
   }
 
-  postTrip(title: String, type: String, location: String, startDate?: Date, endDate?: Date): Observable<any>{
+  postTrip(title: String, type: String, location: String, invites: [String], startDate?: Date, endDate?: Date): Observable<any>{
     const headers = new HttpHeaders().set('x-access-token', State.API)
-    return this.http.post<any>('http://localhost:8080/api/trip', { 
-      title: title,
-      type: type,
-      locations: [location],
-      start_date: startDate,
-      end_date: endDate,
-      participant_ids:[State.id]
-     }, {
-       headers: headers, 
-       observe: 'response'
-    });
+    if(invites == null) {
+      return this.http.post<any>('http://localhost:8080/api/trip', { 
+        title: title,
+        type: type,
+        locations: [location],
+        start_date: startDate,
+        end_date: endDate,
+        participant_ids:[State.id],
+       }, {
+         headers: headers, 
+         observe: 'response'
+      });
+    } else {
+      return this.http.post<any>('http://localhost:8080/api/trip', { 
+        title: title,
+        type: type,
+        locations: [location],
+        start_date: startDate,
+        end_date: endDate,
+        participant_ids:[State.id],
+        pending_invites: invites,
+       }, {
+         headers: headers, 
+         observe: 'response'
+      });
+    }
   }
 }

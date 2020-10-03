@@ -13,13 +13,15 @@ export class CreateTripComponent implements OnInit {
   locationCreateTrip: String;
   startDate: Date;
   endDate: Date;
+  invite: String;
+  invites: [String] = null;
   constructor(private appService: AppService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   createTrip(){
-    this.appService.postTrip(this.titleCreateTrip, this.typeCreateTrip, this.locationCreateTrip, this.startDate, this.endDate).subscribe({
+    this.appService.postTrip(this.titleCreateTrip, this.typeCreateTrip, this.locationCreateTrip, this.invites, this.startDate, this.endDate).subscribe({
       next: data => {
         console.log("Post trip")
         console.log("\tStatus Code: ", data.status);
@@ -28,5 +30,28 @@ export class CreateTripComponent implements OnInit {
       },
       error: error => console.error('There was an error!', error)
     })
+  }
+  
+  addInvite(){
+    if(this.invite != null){
+      if(this.invites == null){
+        console.log("Adding invite: "+this.invite);
+        this.invites = [this.invite];
+      } else if(!this.invites.includes(this.invite)){
+        console.log("Adding invite: "+this.invite);
+        this.invites.push(this.invite);
+      } else {
+        console.log("Invalid email");
+      }
+    } else {
+      console.log("Invalid email");
+    }
+  }
+
+  deleteInvite(invite: String){
+    const index = this.invites.indexOf(invite, 0);
+    if (index > -1) {
+      this.invites.splice(index, 1);
+    }
   }
 }

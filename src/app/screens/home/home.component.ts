@@ -30,8 +30,4 @@ export class HomeComponent implements OnInit {
       },
       error => console.error('There was an error!', error))
   }
-
-  tripTapped(trip: Trip){
-    
-  }
 }

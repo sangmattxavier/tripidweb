@@ -14,7 +14,7 @@ export class Trip {
     participant_ids: String[];
     itinerary_list: String[];
     supply_list: String[];
-    _id: String;
+    _id: string;
     title: String;
     type: String;
 }

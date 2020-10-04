@@ -15,7 +15,7 @@
         <button (click)="toggleLocations()" class="bg-gray-100 text-black px-3 py-1 w-full my-4 flex flex-row justify-between"><p>locations</p><p>^</p></button>
         <section #locationSection *ngIf="locationsOpened">
           <div class="flex flex-row mb-2 " *ngFor="let location of locations">
-            <label for="" class="m-4 text-black w-9/12 overflow-x-scroll">{{location.formatted_address}}</label>
+            <label for="" class="m-4 text-black w-9/12 overflow-x-scroll">{{location.label}}</label>
             <button (click)="deleteLocation(location)" class="bg-red-400 rounded text-white text-lg px-3 py-1 w-3/12">delete</button>
           </div>
           <div class="flex flex-row mb-2">

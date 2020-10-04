@@ -17,7 +17,7 @@
           <section class="bg-gray-400 w-full h-16">Itinerary</section>
           <section class="bg-gray-300 w-full" *ngFor="let day of days">
             day
-            <section class="bg-gray-200 w-full h-12 ml-2" *ngFor="let task of day">test</section>
+          <section class="bg-gray-200 w-full h-12 ml-2" *ngFor="let task of day">test</section>
           </section>
         </div>
         <div id="supplies" class="my-4">
@@ -25,5 +25,6 @@
           <section class="bg-gray-300 w-full h-16 ml-2" *ngFor="let supply of supplies">test</section>
         </div>
       </div>
+      <button (click)="deleteTrip(trip)" class="bg-red-400 rounded text-white text-lg px-3 py-1">delete</button>
     </div>
   </div>

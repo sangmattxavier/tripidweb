@@ -37,6 +37,14 @@ export class AppService {
     });
   }
 
+  deleteTripByTripId(id: string): Observable<any>{
+    const headers = new HttpHeaders().set('x-access-token', State.API)
+    return this.http.delete<any>('http://localhost:8080/api/trip/'+id, { 
+      headers: headers, 
+      observe: 'response'
+    });
+  }
+
   getTripsByUserId(): Observable<any>{
     const headers = new HttpHeaders().set('x-access-token', State.API)
     return this.http.get<any>('http://localhost:8080/api/trips/'+State.id, { 

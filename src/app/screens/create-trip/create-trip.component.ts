@@ -52,13 +52,18 @@ export class CreateTripComponent implements OnInit {
     if(this.location != null){
       const loc = new Location(this.location.name, this.location.formatted_address, this.location.geometry.location.lng(), this.location.geometry.location.lat())
       if(this.locations == null){
-        console.log("Adding loc: ", loc);
+        console.log("Adding loc bc null: ", loc);
         this.locations = [loc];
-      } else if(!this.locations.includes(loc)){
+      } else{
+        var contains = this.locations.some(elem =>{
+          return JSON.stringify(loc) === JSON.stringify(elem);
+        });
+        if(!contains){
         console.log("Adding loc: ", loc);
         this.locations.push(loc);
-      } else {
-        console.log("Invalid loc");
+        } else {
+          console.log("Invalid loc inside");
+        }
       }
     } else {
       console.log("Invalid loc");

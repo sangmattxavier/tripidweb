@@ -49,18 +49,18 @@ export class CreateTripComponent implements OnInit {
   }
 
   addLocation(){
-    if(this.location != null){
+    if(this.location) {
       const loc = new Location(this.location.name, this.location.formatted_address, this.location.geometry.location.lng(), this.location.geometry.location.lat())
-      if(this.locations == null){
+      if(!this.locations) {
         console.log("Adding loc bc null: ", loc);
         this.locations = [loc];
-      } else{
-        var contains = this.locations.some(elem =>{
+      } else {
+        var locExists = this.locations.some(elem =>{
           return JSON.stringify(loc) === JSON.stringify(elem);
         });
-        if(!contains){
-        console.log("Adding loc: ", loc);
-        this.locations.push(loc);
+        if(!locExists){
+          console.log("Adding loc: ", loc);
+          this.locations.push(loc);
         } else {
           console.log("Invalid loc inside");
         }

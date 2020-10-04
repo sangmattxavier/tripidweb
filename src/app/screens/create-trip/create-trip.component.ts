@@ -17,7 +17,7 @@ export class CreateTripComponent implements OnInit {
   typeCreateTrip: String;
   startDate: Date;
   endDate: Date;
-  invite: String;
+  invite: string;
   invites: [String] = null;
   locations: [Location] = null;
   location: Address;
@@ -78,8 +78,9 @@ export class CreateTripComponent implements OnInit {
   }
   
   addInvite(){
-    if(this.invite != null){
-      if(this.invites == null){
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if(this.invite && re.test(this.invite)){
+      if(!this.invites){
         console.log("Adding invite: "+this.invite);
         this.invites = [this.invite];
       } else if(!this.invites.includes(this.invite)){

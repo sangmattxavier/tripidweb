@@ -24,7 +24,7 @@ export class Trip {
 export class Location {
   constructor(
     public label: String,
-    public formatted_address: String,
+    public address: String,
     public long: Number,
     public lat: Number
   ){}

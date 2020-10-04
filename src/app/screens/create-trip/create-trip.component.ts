@@ -50,7 +50,7 @@ export class CreateTripComponent implements OnInit {
 
   addLocation(){
     if(this.location != null){
-      const loc = new Location(this.location.formatted_address, this.location.formatted_address, this.location.geometry.location.lng(), this.location.geometry.location.lat())
+      const loc = new Location(this.location.name, this.location.formatted_address, this.location.geometry.location.lng(), this.location.geometry.location.lat())
       if(this.locations == null){
         console.log("Adding loc: ", loc);
         this.locations = [loc];
